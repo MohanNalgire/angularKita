@@ -6,8 +6,11 @@
     color="primary"
     >Add Todo</button>
 </div>
-
-<mat-card>
-    <P>My Todo</P>
-    <button mat-stroked-button >Mark as complete</button>
-</mat-card>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<ng-container *ngIf=""!loading>
+    <mat-card *ngFor="let todo of todos">
+        <P [ngClass]="{complete:todo.status =='done'}">{{todo.title}}</P>
+        <p>{{todo.description}}</p>
+        <button (click)="markAsComplete(todo._id)" mat-stroked-button >Mark as complete</button>
+    </mat-card>
+</ng-container>

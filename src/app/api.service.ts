@@ -29,7 +29,7 @@ export class ApiService {
     deleteTodo(id:string):Observable<ITodo>{
         return this.http.delete<ITodo>(`${this.baseURL}/${id}`);
     }
-    updateTodo(id:string, changes:ITodo):Observable<ITodo>{
+    updateTodo(id:string, changes:any):Observable<ITodo>{
         return this.http.put<ITodo>(`${this.baseURL}/${id}`, changes);
     }
 }

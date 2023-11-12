@@ -18,7 +18,7 @@ export const getInitialState = () => {
 @Injectable({
     providedIn:'root'
 })
-@StoreConfig({name:'root'})
+@StoreConfig({name:'todo'})
 export class TodoStore extends Store<TodoState> {
     constructor(){
         super(getInitialState());

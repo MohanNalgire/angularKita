@@ -1,8 +1,10 @@
-export interface ITodo {
-    title:string,
-    description:string
+export enum TodoStatus {
+    OPEN ='open',
+    DONE ='done'
 }
-
-export interface ITask {
-    
+export interface ITodo {
+    _id: string;
+    title: string;
+    description: string;
+    status: TodoStatus;
 }
