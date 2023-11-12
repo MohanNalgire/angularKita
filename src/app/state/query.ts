@@ -2,10 +2,10 @@ import { Query } from "@datorama/akita";
 import { TodoState, TodoStore } from "./store";
 import { state } from "@angular/animations";
 import { Observable } from "rxjs";
-import { ITodo } from "../todo.module";
+import { ITodo } from "../todo.model";
 
 export class TodoQuery extends Query<TodoState> {
-    
+
     constructor(private todoStore:TodoStore){
         super(todoStore);
     }
@@ -22,3 +22,6 @@ export class TodoQuery extends Query<TodoState> {
         return this.selectLoading();
     }
 }
+
+
+// https://www.youtube.com/watch?v=2Re3Fm8fV8o&list=PLaY6YJMqp51eoN-bVk01nwEmYJ2cB7UUz&index=7

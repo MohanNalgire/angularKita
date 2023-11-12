@@ -1,5 +1,5 @@
 import { Store, StoreConfig } from "@datorama/akita";
-import { ITodo } from "../todo.module";
+import { ITodo } from "../todo.model";
 import { Injectable } from "@angular/core";
 
 export interface TodoState {

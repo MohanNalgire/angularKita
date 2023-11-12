@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
-import { ITodo } from "./todo.module";
+import { ITodo } from "./todo.model";
 import { environment } from "src/environments/environment.development";
 
 
