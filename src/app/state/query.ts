@@ -9,7 +9,6 @@ import { Injectable } from "@angular/core";
     providedIn:'root'
 })
 export class TodoQuery extends Query<TodoState> {
-    getIsloading: any;
 
     constructor(private todoStore:TodoStore){
         super(todoStore);
@@ -23,10 +22,9 @@ export class TodoQuery extends Query<TodoState> {
         return this.select(state=> state.isLoaded);
     }
 
-    getLoading():Observable<boolean>{
+    getIsLoading():Observable<boolean>{
         return this.selectLoading();
     }
 }
 
 
-// https://www.youtube.com/watch?v=2Re3Fm8fV8o&list=PLaY6YJMqp51eoN-bVk01nwEmYJ2cB7UUz&index=7

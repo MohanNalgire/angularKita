@@ -28,26 +28,24 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
   loading = false;
   todos: ITodo[] = [];
-  todoStore: any;
 
   constructor(
     private apiSerivce: ApiService,
     private router: Router,
     private todoquery: TodoQuery,
-    todoStore: TodoStore
+    private todoStore: TodoStore
   ) {}
 
   ngOnInt(): void {
-    this.todoquery.getIsloading().subscribe();
+    this.todoquery.getIsLoading().subscribe();
     this.todoquery.getTodos().subscribe();
-    this.todoquery
-      .getLoaded()
+    this.todoquery.getLoaded()
       .pipe(
         take(1),
         filter((res) => !res),
         switchMap(() => {
-          this.todoStore.setloading(true);
-          return this.todoStore.apiSerivce.getTodos();
+          this.todoStore.setLoading(true);
+          return this.apiSerivce.getTodos()|| false;
         })
       )
       .subscribe({
@@ -55,7 +53,7 @@ export class HomeComponent {
           this.todoStore.update(() => {
             return { todos: res };
           });
-          this.todoStore.setloading(false);
+          this.todoStore.setLoading(false);
         },
         error: (err) => {
           console.log(err);
@@ -87,4 +85,16 @@ export class HomeComponent {
       error: (err) => {},
     });
   }
+
+  deleteTodo(id:string){
+    this.apiSerivce.deleteTodo(id)
+      .subscribe({
+        next:(res)=>{
+          this.todoStore.update(state=>({...state,todos:state.todos.filter(t=>t._id === id)}));
+        },
+        error:(err)=>{console.log(err)}
+      })
+  }
+
+
 }

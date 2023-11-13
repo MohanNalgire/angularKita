@@ -32,4 +32,8 @@ export class ApiService {
     updateTodo(id:string, changes:any):Observable<ITodo>{
         return this.http.put<ITodo>(`${this.baseURL}/${id}`, changes);
     }
+
+  getTodos():Observable<ITodo[]> {
+    return this.http.get<ITodo[]>(`${this.baseURL}/`);
+  }
 }

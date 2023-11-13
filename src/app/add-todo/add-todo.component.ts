@@ -46,11 +46,7 @@ export class AddTodoComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          /*  
-                    this.todoStore.update(state =>{
-                        return {todo:[...state.todos,res]} 
-                    }); 
-                    */
+                    this.todoStore.update(state => ({todos: [...state.todos, res]}));
           this.todoStore.setLoading(false);
           this.router.navigateByUrl('');
         },
